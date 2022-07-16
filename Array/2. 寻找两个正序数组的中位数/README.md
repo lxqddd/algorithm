@@ -9,3 +9,25 @@
 第一种：数组的长度是偶数，这种情况我们需要找到数组中间的两个数据，求和，然后再除以 2，这才是这组数据的中位数。
 
 第二种：数组的长度是奇数，比如说长度是 7，我们只需要找到数组中间的那条数据就可以了。
+
+## 完整代码
+
+```javascript
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+  const temp = nums1.concat(nums2).sort((a, b) => a - b)
+  if (temp.length % 2 === 0) {
+    return (temp[temp.length / 2 - 1] + temp[temp.length / 2]) / 2
+  }
+  return temp[Math.ceil(temp.length / 2) - 1]
+}
+
+let nums1 = [1, 2],
+  nums2 = [3, 4]
+
+console.log(findMedianSortedArrays(nums1, nums2))
+```
